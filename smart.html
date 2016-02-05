@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app ="appS">
+       
+        <head>
+            <title>My table</title>
+
+            <script src="https://code.angularjs.org/1.3.0-rc.1/angular.min.js"></script>
+            <script src="http://alasql.org/console/alasql.min.js"></script>
+            <script src="http://alasql.org/console/xlsx.core.min.js"></script>
+            <script src="smart.js"></script>
+            <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        </head>
+    <body>
+        <center>
+        <div>
+        <input type="text" placeholder="search elements" ng-model= "searching.name"/>
+           
+        </div><br>
+        
+            <div ng-controller="mainController">
+
+                <div class="container" id="exportable">
+                    
+                    <table st-table="rowCollection" class="table table-striped">
+                       <thead>
+                           <tr>
+                              <th>Name</th>
+                              <th>Education</th>
+                               <th>Date of Birth</th>
+                               <th>Percentage</th>
+
+                           </tr>
+                       </thead>
+            <tbody>
+                    <tr  ng-repeat="row in rowCollection | filter: searching" > 
+
+                        <td>{{ row.name | uppercase }}</td>
+                        <td>{{ row.education | uppercase }}</td>
+                        <td>{{ row.DateOfBirth | date }}</td>
+                        <td>{{ row.percentage }}</td>
+
+                    </tr>
+            </tbody>
+
+    
+                    </table>
+                        <button ng-click="exportData()">Export</button>
+                </div>
+            </div>  
+        </center>
+    </body>
+                                          
+    </html>
